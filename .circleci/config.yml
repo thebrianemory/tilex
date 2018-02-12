@@ -12,7 +12,7 @@ jobs:
       - run: sudo apt-get update
       - run: curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
       - run: sudo apt-get install nodejs
-      - run: sudo apt-get install build-essential
+      - run: sudo apt-get install build-essential ca-certificates
       - run: sudo apt-get install libnss3 libgconf-2-4
       - run: curl -L -O "http://chromedriver.storage.googleapis.com/2.32/chromedriver_linux64.zip"
       - run: file chromedriver_linux64.zip
