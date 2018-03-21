@@ -170,6 +170,9 @@
   "config/config.exs": {
     "type": "config"
   },
+  "assets/js/*.js": {
+    "type": "javascript"
+  },
   "config/*.exs": {
     "type": "config",
     "template": [
