@@ -6,7 +6,7 @@ $(function() {
     $hl.each(function() {
       var language = $(this)
         .attr('class')
-        .replace(/\s*hljs\s*/, ' ')
+        .replace('hljs', '')
         .trim()
         .split(' ')[0];
       $(this).parent().attr('data-language', language);
