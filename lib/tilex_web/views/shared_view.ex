@@ -11,7 +11,6 @@ defmodule TilexWeb.SharedView do
 
   def rss_date(post) do
     post.inserted_at
-    |> datetime_in_zone()
     |> Timex.format!("%a, %d %b %Y %H:%M:%S GMT", :strftime)
   end
 
