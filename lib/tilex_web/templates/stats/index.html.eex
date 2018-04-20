@@ -9,7 +9,7 @@
       </header>
       <ul class="activity_chart" id="activity">
         <%= for [date, count] <- @posts_for_days do %>
-          <li data-amount="<%= count %>" data-date="<%= Timex.format!(date, "%a, %b %-e", :strftime)%>">
+          <li data-amount="<%= count %>" data-date="<%= TilexWeb.SharedView.statistic_date(date) %>">
             <div class="activity_chart_bar" style="height: <%= (count * 100) / @max_count %>%;"></div>
           </li>
         <% end %>

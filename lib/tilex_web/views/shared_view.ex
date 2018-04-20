@@ -3,6 +3,12 @@ defmodule TilexWeb.SharedView do
 
   alias Guardian.Plug
 
+  def statistic_date(date) do
+    date
+    |> datetime_in_zone()
+    |> Timex.format!("%a, %b %-e", :strftime)
+  end
+
   def display_date(post) do
     post.inserted_at
     |> datetime_in_zone()

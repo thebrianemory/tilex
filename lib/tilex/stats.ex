@@ -20,15 +20,22 @@ defmodule Tilex.Stats do
   end
 
   def all do
+    timezone = Application.get_env(:tilex, :tz)
+
     posts_for_days_sql = """
       with posts as (
-           select date((inserted_at at time zone 'America/New_York')::timestamptz) as post_date
+              select date((inserted_at at time zone '#{timezone}')::timestamptz) as post_date
               from posts
               where inserted_at is not null
       )
       select dates_table.date, count(posts.post_date) from (
-           select (generate_series(now()::date - '29 day'::interval, now()::date, '1 day'::interval))::date as date
-      ) as dates_table
+        select (
+          generate_series(
+            now()::date - '29 day'::interval,
+            (now() at time zone '#{timezone}'),
+            '1 day'::interval)
+          )::date as date
+        ) as dates_table
       left outer join posts
       on posts.post_date=dates_table.date
       group by dates_table.date
