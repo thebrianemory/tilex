@@ -16,7 +16,7 @@ defmodule TilexWeb.SharedView do
   end
 
   defp datetime_in_zone(datetime) do
-    timezone = Timex.Timezone.get("America/Chicago", datetime)
+    timezone = Timex.Timezone.get(Application.get_env(:tilex, :tz), datetime)
     Timex.Timezone.convert(datetime, timezone)
   end
 
