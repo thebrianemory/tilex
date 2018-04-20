@@ -5,6 +5,11 @@ defmodule Features.VisitorViewsStatsTest do
     String.replace(Wallaby.Element.text(element), "\n", " ")
   end
 
+  def datetime_in_zone(datetime) do
+    timezone = Timex.Timezone.get(Application.get_env(:tilex, :tz), datetime)
+    Timex.Timezone.convert(datetime, timezone)
+  end
+
   test "sees total number of posts by channel", %{session: session} do
     target_channel = Factory.insert!(:channel, name: "phoenix")
     other_channel = Factory.insert!(:channel, name: "other")
@@ -77,10 +82,12 @@ defmodule Features.VisitorViewsStatsTest do
     day_of_the_week = :calendar.day_of_the_week(Date.to_erl(Timex.today()))
 
     duration = Timex.Duration.from_days(day_of_the_week - 1 + 7)
-    previous_monday = Timex.subtract(today, duration)
+    previous_monday = Timex.subtract(today, duration) |> datetime_in_zone
 
-    previous_tuesday = Timex.add(previous_monday, Timex.Duration.from_days(1))
-    previous_wednesday = Timex.add(previous_monday, Timex.Duration.from_days(2))
+    previous_tuesday = Timex.add(previous_monday, Timex.Duration.from_days(1)) |> datetime_in_zone
+
+    previous_wednesday =
+      Timex.add(previous_monday, Timex.Duration.from_days(2)) |> datetime_in_zone
 
     Factory.insert!(:post, title: "Vim rules", inserted_at: dt.(Date.to_erl(previous_monday)))
     Factory.insert!(:post, title: "Vim rules", inserted_at: dt.(Date.to_erl(previous_tuesday)))
