@@ -32,7 +32,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/tilex.css") %>">
     <%= if assigns[:canonical_url] do %>
       <link rel="canonical" href="<%= @canonical_url %>">
     <% end %>
@@ -124,7 +124,7 @@
         </li>
       </ul>
     </nav>
-    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+    <script src="<%= static_path(@conn, "/js/tilex.js") %>"></script>
 
     <%= if Application.get_env(:tilex, :ga_identifier) do %>
       <script type="text/javascript">
