@@ -12,40 +12,17 @@
 
 alias Tilex.{Channel, Developer, Post, Repo}
 
-Repo.delete_all(Post)
 Repo.delete_all(Channel)
 Repo.delete_all(Developer)
 
-phoenix_channel = Repo.insert!(%Channel{name: "phoenix", twitter_hashtag: "phoenix"})
-elixir_channel = Repo.insert!(%Channel{name: "elixir", twitter_hashtag: "myelixirstatus"})
-erlang_channel = Repo.insert!(%Channel{name: "erlang", twitter_hashtag: "erlang"})
+Repo.insert!(%Channel{name: "phoenix", twitter_hashtag: "phoenix"})
+Repo.insert!(%Channel{name: "elixir", twitter_hashtag: "myelixirstatus"})
+Repo.insert!(%Channel{name: "erlang", twitter_hashtag: "erlang"})
+Repo.insert!(%Channel{name: "vim", twitter_hashtag: "vim"})
+Repo.insert!(%Channel{name: "workflow", twitter_hashtag: "workflow"})
+Repo.insert!(%Channel{name: "git", twitter_hashtag: "git"})
+Repo.insert!(%Channel{name: "elm", twitter_hashtag: "elmjang"})
+Repo.insert!(%Channel{name: "graphql", twitter_hashtag: "graphql"})
+Repo.insert!(%Channel{name: "design", twitter_hashtag: "design"})
 
-developer =
-  Repo.insert!(%Developer{email: "developer@hashrocket.com", username: "rickyrocketeer"})
-
-1..100
-|> Enum.each(fn _i ->
-     Repo.insert!(%Post{
-       title: "Observing Change",
-       body: "A Gold Master Test in Practice",
-       channel: phoenix_channel,
-       developer: developer,
-       slug: Post.generate_slug()
-     })
-
-     Repo.insert!(%Post{
-       title: "Controlling Your Test Environment",
-       body: "Slow browser integration tests are a hard problem",
-       channel: elixir_channel,
-       developer: developer,
-       slug: Post.generate_slug()
-     })
-
-     Repo.insert!(%Post{
-       title: "Testing Elixir",
-       body: "A Rubyist's Journey",
-       channel: erlang_channel,
-       developer: developer,
-       slug: Post.generate_slug()
-     })
-   end)
+Repo.insert!(%Developer{email: "the@brianemory.com", username: "thebrianemory"})
