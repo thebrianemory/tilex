@@ -8,11 +8,11 @@
     <meta name="csrf" content="<%= Plug.CSRFProtection.get_csrf_token() %>">
 
     <meta name="format-detection" content="telephone=no">
-    <meta name="description" content="TIL is an open-source project by Hashrocket that exists to catalogue the sharing & accumulation of knowledge as it happens day-to-day.">
+    <meta name="description" content="TIL exists to catalogue the sharing & accumulation of knowledge as it happens day-to-day. Created and open-sourced by Hashrocket.">
 
     <meta itemprop="name" content="Today I Learned">
     <meta itemprop="brand" content="Today I Learned">
-    <meta itemprop="description" content="TIL is an open-source project by Hashrocket that exists to catalogue the sharing & accumulation of knowledge as it happens day-to-day.">
+    <meta itemprop="description" content="TIL exists to catalogue the sharing & accumulation of knowledge as it happens day-to-day. Created and open-sourced by Hashrocket.">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -53,17 +53,17 @@
           <li> <%= link("Profile", to: developer_path(@conn, :edit)) %> </li>
         </ul>
       </nav>
+    <% else %>
+      <nav class="admin_panel">
+        <ul>
+          <li><a href="https://www.brianemory.com">brianemory.com</a></li>
+        </ul>
+      </nav>
     <% end %>
 
     <header class="site_head">
       <div>
         <h1><a href="/">Today I Learned</a></h1>
-        <h2>
-          <a href="https://hashrocket.com" class="hr">A Hashrocket project</a>
-          <span>
-            <a href="https://twitter.com/<%= Application.get_env(:tilex, :default_twitter_handle)%>" class="twitter">Follow on Twitter</a>
-          </span>
-        </h2>
       </div>
     </header>
 
@@ -99,15 +99,13 @@
                 Hashrocket
               </a>
               that exists to catalogue the sharing & accumulation of knowledge
-              as it happens day-to-day. Posts have a 200-word limit, and
-              posting is open to any Rocketeer as well as selected friends of
-              Hashrocket. We hope you enjoy learning along with us.
+              as it happens day-to-day in 200 word posts. Thanks to Haskrocket for open-sourcing TIL!.
               <ul class="social">
                 <li>
-                  <%= link("/#{Application.get_env(:tilex, :default_twitter_handle)}", to: "https://twitter.com/#{Application.get_env(:tilex, :default_twitter_handle)}", class: "social_twitter") %>
+                  <%= link("/hashrocket", to: "https://twitter.com/hashrocket", class: "social_twitter", target: "_blank") %>
                 </li>
                 <li>
-                  <%= link("/hashrocket/tilex", to: "https://github.com/hashrocket/tilex", class: "social_github") %>
+                  <%= link("/hashrocket/tilex", to: "https://github.com/hashrocket/tilex", class: "social_github", target: "_blank") %>
                 </li>
               </ul>
             </div>
@@ -117,7 +115,7 @@
           <%= link("Statistics", to: "/statistics", class: "site_nav__link") %>
         </li>
         <li class="site_nav__twitter">
-            <%= link("Twitter", to: "https://twitter.com/#{Application.get_env(:tilex, :default_twitter_handle)}", class: "site_nav__link") %>
+            <%= link("Twitter", to: "https://twitter.com/thebrianemory", class: "site_nav__link", target: "_blank") %>
         </li>
         <li class="site_nav__surprise_me">
             <%= link("Surprise Me", to: "/random", class: "site_nav__link", rel: "nofollow") %>
