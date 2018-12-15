@@ -24,6 +24,11 @@ defmodule TilexWeb.UserSocket do
     {:ok, socket}
   end
 
+  ## Transports
+  socket "/socket", TilexWeb.UserSocket,
+    websocket: [timeout: 45_000],
+    longpoll: false
+
   # Socket id's are topics that allow you to identify all sockets for a given
   # user:
   #
