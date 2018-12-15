@@ -6,7 +6,7 @@ defmodule TilexWeb.UserSocket do
   channel("text_converter", Tilex.TextConverterChannel)
 
   ## Transports
-  transport(:websocket, Phoenix.Transports.WebSocket)
+  transport(:websocket, Phoenix.Transports.WebSocket, timeout: 45_000)
   # transport :longpoll, Phoenix.Transports.LongPoll
 
   # Socket params are passed from the client and can
@@ -23,11 +23,6 @@ defmodule TilexWeb.UserSocket do
   def connect(_params, socket) do
     {:ok, socket}
   end
-
-  ## Transports
-  socket "/socket", TilexWeb.UserSocket,
-    websocket: [timeout: 45_000],
-    longpoll: false
 
   # Socket id's are topics that allow you to identify all sockets for a given
   # user:
